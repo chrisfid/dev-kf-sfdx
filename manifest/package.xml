@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>WebinarTeamMemberTriggerHandler</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Webinar__c.Agenda__c</members>
+        <name>CustomField</name>
+    </types>
     <version>55.0</version>
 </Package>

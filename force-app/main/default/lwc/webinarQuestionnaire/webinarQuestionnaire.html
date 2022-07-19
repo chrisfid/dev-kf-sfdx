@@ -1,0 +1,29 @@
+<template>
+    <lightning-record-edit-form
+            object-api-name='Questionnaire__c'
+            onsuccess={toastOfCreation}
+            onsubmit={handleRecord}
+    >
+        <div>
+            Hi: {userName}! Share your feedback with us!
+        </div>
+        <lightning-input-field field-name="Attend__c" onclick={hideOrShow}></lightning-input-field>
+        <template if:false={hide}>
+            <lightning-card>
+                <lightning-input-field field-name="Name"></lightning-input-field>
+                <lightning-input-field field-name="Age__c"></lightning-input-field>
+                <lightning-input-field field-name="Score__c"></lightning-input-field>
+                <lightning-input-field field-name="Feedback__c"></lightning-input-field>
+                <lightning-input-field field-name="User__c"></lightning-input-field>
+                <lightning-input-field field-name="Would_you_recommend_this_webinar__c"></lightning-input-field>
+                <lightning-input-field field-name="Tell_us_why__c"></lightning-input-field>
+            </lightning-card>
+
+        </template>
+
+        <div class="slds-var-m-top_medium">
+            <lightning-button variant="brand" type="submit" label="Save">
+            </lightning-button>
+        </div>
+    </lightning-record-edit-form>
+</template>

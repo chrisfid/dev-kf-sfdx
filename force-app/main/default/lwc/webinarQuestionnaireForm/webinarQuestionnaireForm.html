@@ -1,0 +1,38 @@
+<!--
+ - Located on Webinar Detail Page
+ - Enables a user to create a Webinar Questionnaire and navigates to it upon creation.
+ -->
+
+<!-- Webinar Questionnaire Form --><!-- Questionnaire -->
+<template>
+    <lightning-card title={headerText}>
+
+        <lightning-record-edit-form
+                object-api-name={questionnaireAPIName}
+                onsubmit={handleSubmit}
+        >
+            <lightning-input-field field-name="Age__c"></lightning-input-field>
+            <lightning-input-field field-name="Attendance__c"></lightning-input-field>
+            <lightning-input-field field-name="Feedback__c"></lightning-input-field>
+            <lightning-input-field field-name="Score__c"></lightning-input-field>
+            <lightning-input-field field-name="Recommend_Webinar__c" onchange={handleCheckbox}></lightning-input-field>
+            <lightning-input-field field-name="Unrecommended_Reason__c" if:false={showData}></lightning-input-field>
+            <div class="slds-var-m-top_medium">
+                <lightning-button variant="brand" type="submit" label="Send"></lightning-button>
+            </div>
+        </lightning-record-edit-form>
+    </lightning-card>
+    <lightning-quick-action-panel header="LWC Quick Action Techdicer">
+        <p>In it a screen flow is open like modal pop and ask users to fill and submit the information.</p>
+
+        <div slot="footer">
+            <lightning-button variant="neutral"
+                              label="Clone Webinar" onclick={closeAction}>
+            </lightning-button>
+            <lightning-button variant="brand"
+                              label="Save" onclick={closeAction}
+                              class="slds-m-left_x-small">
+            </lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>

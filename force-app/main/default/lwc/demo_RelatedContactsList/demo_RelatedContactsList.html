@@ -1,0 +1,34 @@
+<!--
+ - Created by kfidyka on 12.07.2022.
+ -->
+
+<!-- Demo Related Contacts List -->
+<template>
+    <lightning-card title="Related Contacts without cases">
+        <lightning-layout multiple-rows="true">
+            <lightning-layout-item size="12" flexibility="auto">
+                <!--
+                Wired attributes are not available at the moment of component creation.
+                Usually you should check if its 'data' attribute is populated before
+                displaying anything depending on it.
+                -->
+                <lightning-datatable if:true={contacts.data}
+                                     key-field="Id"
+                                     hide-checkbox-column="true"
+                                     data={contacts.data}
+                                     columns={columns}
+                                     onrowaction={handleRowAction}></lightning-datatable>
+            </lightning-layout-item>
+            <lightning-layout-item size="6" flexibility="auto">
+                <!--
+                Child component. Seems like underscore ("_") in name makes it look weird.
+                Attribute created as 'accountId' is set in HTML by 'account-id'
+                If child component dispatches an event then you can add a handler to that specific event name
+                -->
+                <c-demo-_-case-creation-form account-id={recordId}
+                                             oncasecreated={handleCaseCreated}
+                                             contact-id={chosenContactId}></c-demo-_-case-creation-form>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>

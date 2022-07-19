@@ -1,0 +1,42 @@
+<!--
+ - Created by kfidyka on 12.07.2022.
+ - Located on Case? I guess Contact Detail Page
+ - Does NOT work yet
+ -->
+
+<!-- Demo Case Creation Form -->
+<template>
+    <!--
+    <template> tag will not be rendered on actual page. It can be treated as a container
+    https://www.w3schools.com/tags/tag_template.asp
+    -->
+    <template if:true={contact} >
+<!--        <lightning-card title="Create a Case for this Contact">-->
+<!--            <p>{name}</p>-->
+        <lightning-card title={headerTitle}>
+            <!--
+            if:true is inherited by every element in LWC so it can be used directly on it
+            -->
+            <lightning-spinner variant="brand" if:true={isLoading}></lightning-spinner>
+            <lightning-record-edit-form object-api-name={objectApiName}
+                                        onsubmit={saveRecord}
+                                        onsuccess={handleSuccess}>
+                <lightning-layout multiple-rows="true" class="slds-p-around_small">
+                    <lightning-layout-item size="12" flexibility="true" >
+                        <lightning-messages></lightning-messages>
+                        <!--
+                        For boolean values like 'required' and 'disabled' it's enough to write attribute name.
+                        It means that this attribute is set to TRUE
+                        -->
+<!--                        <p>{contact.data.fields.Name}</p>-->
+                        <lightning-input-field field-name="Subject" required></lightning-input-field>
+                        <lightning-input-field field-name="Description"></lightning-input-field>
+                        <lightning-input-field field-name="ContactId" value={contactId} disabled></lightning-input-field>
+                        <lightning-input-field field-name="AccountId" value={accountId} disabled></lightning-input-field>
+                        <lightning-button label="Save" variant="brand" type="submit"></lightning-button>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-record-edit-form>
+        </lightning-card>
+    </template>
+</template>
